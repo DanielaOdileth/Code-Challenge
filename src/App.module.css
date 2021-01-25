@@ -1,0 +1,7 @@
+.cardPostStyle {
+    cursor: pointer;
+    background-color: aliceblue;
+    border: solid 2px gray;
+    margin: 10px;
+    border-radius: 30px;
+}

@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import getPost from "../services/getPosts";
 import { useHistory } from 'react-router-dom'
-import { userImages } from '../utils/userImages';
 import Header from "./Header";
+import { userImages } from '../utils/userImages';
+import style from './../App.module.css';
+
 
 const Posts = () => {
     const [postsList, setPostsList] = useState([]);
     const history = useHistory();
-
     useEffect(() => {
         getPost()
             .then(response => setPostsList(response.data))
-            .catch(err => console.log('error ---> ', err));
+            .catch(err => console.log(`There was an error to get post ${err}`));
     }, []);
 
     const handleOnClick = (post) => {
@@ -21,19 +22,12 @@ const Posts = () => {
         });
 
     }
-
     const list = postsList.map((post) => {
         const { id, title, body, userId } = post;
         const randomUserImage = Math.floor((Math.random() * ((1 + 1) - 0)) + 0);
+        
         return (
-            <div key={`post#${id}`} className="card" onClick={() => { handleOnClick(post) }}
-                style={{
-                    cursor: "pointer",
-                    backgroundColor: "aliceblue",
-                    border: "solid 2px gray",
-                    margin: "10px",
-                    borderRadius: "30px"
-                }}>
+            <div key={`post#${id}`} className={`card ${style.cardPostStyle}`} onClick={() => { handleOnClick(post) }}>
                 <div className="card-body">
                     <div className="row">
                         <div className="col-sm-1">

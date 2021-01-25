@@ -3,9 +3,11 @@ import { useLocation } from 'react-router-dom'
 import getComments from '../services/getComments';
 import { userImages } from '../utils/userImages';
 import Header from "./Header";
+import style from './../App.module.css';
 
 const Comments = () => {
     const location = useLocation();
+
     const [commentsList, setCommentsList] = useState([]);
     const { post } = location.state;
     const { id, title, body, userId } = post;
@@ -48,12 +50,7 @@ const Comments = () => {
     return (
         <>
             <Header showBackButton={true} />
-            <div className="card" style={{
-                backgroundColor: "aliceblue",
-                border: "solid 2px gray",
-                margin: "10px",
-                borderRadius: "30px"
-            }}>
+            <div className={`card ${style.cardPostStyle}`}>
                 <div className="card-body">
                     <h5 className="card-title">{title}</h5>
                     <h6 className="card-subtitle mb-2 text-muted">User #: {userId}</h6>
