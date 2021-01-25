@@ -18,7 +18,7 @@ const Comments = () => {
     const commentsListElements = commentsList.map(comment => {
         const { id, name, email, body } = comment;
         return (
-            <li key={`comment#${id}`} className="list-group-item">
+            <li key={`comment#${id}`} className="list-group-item" style={{ margin: "1%", border: "outset" }}>
                 <div className="card" style={{ border: 'none' }}>
                     <div className="card-body">
                         <div className="row">
@@ -37,7 +37,12 @@ const Comments = () => {
     return (
         <>
             <Header showBackButton={true} />
-            <div className="card">
+            <div className="card" style={{
+                backgroundColor: "aliceblue",
+                border: "solid 2px gray",
+                margin: "10px",
+                borderRadius: "30px"
+            }}>
                 <div className="card-body">
                     <h5 className="card-title">{title}</h5>
                     <h6 className="card-subtitle mb-2 text-muted">User #: {userId}</h6>

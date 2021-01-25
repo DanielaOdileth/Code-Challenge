@@ -25,11 +25,16 @@ const Posts = () => {
         const { id, title, body, userId } = post;
 
         return (
-            <div key={`post#${id}`} className="card" onClick={() => { handleOnClick(post) }}>
+            <div key={`post#${id}`} className="card" onClick={() => { handleOnClick(post) }}
+            style={{
+                cursor: "pointer",
+                backgroundColor: "aliceblue",
+                border: "solid 2px gray",
+                margin: "10px",
+                borderRadius: "30px"
+            }}>
                 <div className="card-body">
                     <div className="row">
-                        <div className="col-sm-1">
-                        </div>
                         <div className="col-sm">
                             <h5 className="card-title">{title}</h5>
                             <h6 className="card-subtitle mb-2 text-muted">User #: {userId}</h6>
