@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom'
 import getComments from '../services/getComments';
+import Header from "./Header";
 
 const Comments = () => {
     const location = useLocation();
@@ -35,6 +36,7 @@ const Comments = () => {
 
     return (
         <>
+            <Header showBackButton={true} />
             <div className="card">
                 <div className="card-body">
                     <h5 className="card-title">{title}</h5>

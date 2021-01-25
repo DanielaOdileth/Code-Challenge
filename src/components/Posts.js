@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import getPost from "../services/getPosts";
 import { useHistory } from 'react-router-dom'
+import Header from "./Header";
 
 const Posts = () => {
     const [postsList, setPostsList] = useState([]);
@@ -19,10 +20,10 @@ const Posts = () => {
         });
 
     }
- 
+
     const list = postsList.map((post) => {
         const { id, title, body, userId } = post;
-        
+
         return (
             <div key={`post#${id}`} className="card" onClick={() => { handleOnClick(post) }}>
                 <div className="card-body">
@@ -42,6 +43,7 @@ const Posts = () => {
 
     return (
         <>
+            <Header />
             {list}
         </>
     );
