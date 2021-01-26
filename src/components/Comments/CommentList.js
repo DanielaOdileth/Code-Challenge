@@ -1,26 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom'
-import getComments from '../services/getComments';
-import { userImages } from '../utils/userImages';
-import Header from "./Header";
-import style from './../App.module.css';
+import React from 'react';
+import { userImages } from '../../utils/userImages';
 
-const Comments = () => {
-    const location = useLocation();
-
-    const [commentsList, setCommentsList] = useState([]);
-    const { post } = location.state;
-    const { id, title, body, userId } = post;
-
-    useEffect(() => {
-        getComments(id)
-            .then(response => setCommentsList(response.data))
-            .catch(err => console.log(`There was an error to get comments for postId: ${id}. Error: ${err}`));
-    }, [id])
+/**
+ * CommentList stateful function component renders a list with all the comments by posts.
+ */
+const CommentList = (props) => {
+    const { commentsList } = props;
 
     const commentsListElements = commentsList.map(comment => {
         const { id, name, email, body } = comment;
+        /**Getting random number between 0 and 1 to get an image form userImages array */
         const randomUserImage = Math.floor((Math.random() * ((1 + 1) - 0)) + 0);
+        
         return (
             <li key={`comment#${id}`} className="list-group-item" style={{ margin: "1%", border: "outset" }}>
                 <div className="card" style={{ border: 'none' }}>
@@ -49,19 +40,9 @@ const Comments = () => {
 
     return (
         <>
-            <Header showBackButton={true} />
-            <div className={`card ${style.cardPostStyle}`}>
-                <div className="card-body">
-                    <h5 className="card-title">{title}</h5>
-                    <h6 className="card-subtitle mb-2 text-muted">User #: {userId}</h6>
-                    <p className="card-text">{body}</p>
-                </div>
-            </div>
-            <ul className="list-group">
-                {commentsListElements}
-            </ul>
+            {commentsListElements}
         </>
-    )
+    );
 }
 
-export default Comments;
+export default CommentList;

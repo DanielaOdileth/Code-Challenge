@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Posts from './components/Posts';
-import Comments from './components/Comments';
+import Posts from './components/Posts/Posts';
+import Comments from './components/Comments/Comments';
 class App extends React.Component {
     render() {
         return (
