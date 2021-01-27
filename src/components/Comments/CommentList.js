@@ -11,7 +11,7 @@ const CommentList = (props) => {
         const { id, name, email, body } = comment;
         /**Getting random number between 0 and 1 to get an image form userImages array */
         const randomUserImage = Math.floor((Math.random() * ((1 + 1) - 0)) + 0);
-        
+
         return (
             <li key={`comment#${id}`} className="list-group-item" style={{ margin: "1%", border: "outset" }}>
                 <div className="card" style={{ border: 'none' }}>
@@ -28,7 +28,10 @@ const CommentList = (props) => {
                             </div>
                             <div className="col-sm">
                                 <p>{name}</p>
-                                <p>{email}</p>
+                                <p>
+                                    <b>Email: </b>
+                                    {email}
+                                </p>
                                 <p>{body}</p>
                             </div>
                         </div>

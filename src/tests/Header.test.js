@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Header from '../components/Header';
+import Header from '../components/Header/Header';
 
 import { render, cleanup } from "@testing-library/react";
 import '@testing-library/jest-dom';
@@ -15,7 +15,6 @@ it("Header component render without crashing", () => {
 it("renders Back button correctly", () => {
     const { getByTestId } = render(<Header showBackButton={true} />)
     expect(getByTestId('backLabel')).toHaveTextContent("Back");
-    //   expect(getByTestId('backLabel')).toBeTruthy( );
 });
 
 it("renders Random Post label correctly", () => {
